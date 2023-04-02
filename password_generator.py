@@ -15,7 +15,7 @@ pw_uppers = input('Включать ли прописные буквы? (y/n) ')
 if pw_uppers == 'y':
     chars += uppercase_letters
 pw_lowers = input('Включать ли строчные буквы? (y/n) ')
-if pw_digits == 'y':
+if pw_lowers == 'y':
     chars += lowercase_letters
 pw_punct = input('Включать ли символы !#$%&*+-=?@^_? (y/n) ')
 if pw_punct == 'y':
