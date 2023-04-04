@@ -3,7 +3,7 @@ import random
 word_list = ['момент', 'режим', 'отличие', 'теория', 'крест', 'предприятие', 'шанс', 'момент', 'деталь', 'признание',
              'князь', 'рассмотрение', 'цвет', 'июнь', 'следователь', 'декабрь', 'восток', 'понимание', 'профессия',
              'зритель', 'записка', 'возвращение', 'разработка', 'земля', 'страница']
-
+alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
 def play(word):
     word_completion = '_' * len(word)  # строка, содержащая символы _ на каждую букву задуманного слова
@@ -47,20 +47,21 @@ def play(word):
                     if guess.lower() in word:
                         for i in range(len(word)):
                             if word[i] == guess.lower():
-                                word_completion[i] = guess.upper()
-                                print(word_completion)
-                                if word_completion == word:
-                                    print('Поздравляем, вы угадали слово! Вы победили!')
-                                    guessed = True
-                        else:
-                            tries -= 1
-                            if tries == 0:
-                                print('Вы проиграли!')
-                                print(word.upper())
+                                word_completion = word_completion[:i] + guess.upper() + word_completion[i+1:]
+                            if word_completion == word.upper():
+                                print('Поздравляем, вы угадали слово! Вы победили!')
                                 guessed = True
-                            else:
-                                print(display_hangman(tries), '\nПопыток осталось: ', tries)
-                                print(word_completion)
+                        print(word_completion)
+                    else:
+                        tries -= 1
+                        if tries == 0:
+                            print(display_hangman(tries))
+                            print('Вы проиграли!')
+                            print(word.upper())
+                            guessed = True
+                        else:
+                            print(display_hangman(tries), '\nПопыток осталось: ', tries)
+                            print(word_completion)
 
 
 def get_word():
