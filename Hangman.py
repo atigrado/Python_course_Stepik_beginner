@@ -5,6 +5,16 @@ word_list = ['момент', 'режим', 'отличие', 'теория', 'к
              'зритель', 'записка', 'возвращение', 'разработка', 'земля', 'страница']
 alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
+def start_game():
+    while True:
+        play(get_word())
+        resume = input('Хотите сыграть еще? (да / нет) ')
+        if resume == 'да':
+            print('\n')
+        else:
+            break
+
+
 def play(word):
     word_completion = '_' * len(word)  # строка, содержащая символы _ на каждую букву задуманного слова
     guessed = False  # сигнальная метка
@@ -142,5 +152,4 @@ def display_hangman(tries):
     ]
     return stages[tries]
 
-
-play(get_word())
+start_game()
